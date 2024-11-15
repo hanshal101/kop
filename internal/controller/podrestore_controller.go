@@ -88,7 +88,7 @@ func (r *PodRestoreReconciler) Reconcile(ctx context.Context, req ctrl.Request) 
 
 	if rtPod.Status.LastRestore != time.Now().UTC().Format(time.RFC3339) {
 		rtPod.Status.LastRestore = time.Now().UTC().String()
-		rtPod.Status.LastRestoreStatus = "SUCCESSFULL"
+		rtPod.Status.LastRestoreStatus = "SUCCESSFUL"
 		patch := client.MergeFrom(rtPod.DeepCopy())
 		if err := r.Status().Patch(ctx, &rtPod, patch); err != nil {
 			log.Log.Error(err, "Error updating restore pod status")
