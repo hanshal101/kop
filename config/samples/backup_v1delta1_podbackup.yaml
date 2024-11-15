@@ -1,0 +1,9 @@
+apiVersion: backup.kop.hanshal.com/v1delta1
+kind: PodBackup
+metadata:
+  labels:
+    app.kubernetes.io/name: kop
+    app.kubernetes.io/managed-by: kustomize
+  name: podbackup-sample
+spec:
+  # TODO(user): Add fields here

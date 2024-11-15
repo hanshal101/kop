@@ -1,0 +1,78 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.16.4
+  name: podbackups.backup.kop.hanshal.com
+spec:
+  group: backup.kop.hanshal.com
+  names:
+    kind: PodBackup
+    listKind: PodBackupList
+    plural: podbackups
+    singular: podbackup
+  scope: Namespaced
+  versions:
+  - name: v1delta1
+    schema:
+      openAPIV3Schema:
+        description: PodBackup is the Schema for the podbackups API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: PodBackupSpec defines the desired state of PodBackup.
+            properties:
+              namespace:
+                type: string
+              podBackupLocation:
+                type: string
+              podBackupTime:
+                format: int64
+                type: integer
+              podBackupVolumes:
+                type: boolean
+              podName:
+                description: |-
+                  INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+                  Important: Run "make" to regenerate code after modifying this file
+                type: string
+            required:
+            - namespace
+            - podBackupLocation
+            - podBackupTime
+            - podBackupVolumes
+            - podName
+            type: object
+          status:
+            description: PodBackupStatus defines the observed state of PodBackup.
+            properties:
+              lastBackup:
+                description: |-
+                  INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
+                  Important: Run "make" to regenerate code after modifying this file
+                type: string
+            required:
+            - lastBackup
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

@@ -1,0 +1,5 @@
+## Append samples of your project ##
+resources:
+- backup_v1delta1_podbackup.yaml
+- backup_v1delta1_podrestore.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples

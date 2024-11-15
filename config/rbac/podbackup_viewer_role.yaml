@@ -1,0 +1,23 @@
+# permissions for end users to view podbackups.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: kop
+    app.kubernetes.io/managed-by: kustomize
+  name: podbackup-viewer-role
+rules:
+- apiGroups:
+  - backup.kop.hanshal.com
+  resources:
+  - podbackups
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - backup.kop.hanshal.com
+  resources:
+  - podbackups/status
+  verbs:
+  - get

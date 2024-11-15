@@ -1,0 +1,23 @@
+# permissions for end users to view podrestores.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: kop
+    app.kubernetes.io/managed-by: kustomize
+  name: podrestore-viewer-role
+rules:
+- apiGroups:
+  - backup.kop.hanshal.com
+  resources:
+  - podrestores
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - backup.kop.hanshal.com
+  resources:
+  - podrestores/status
+  verbs:
+  - get

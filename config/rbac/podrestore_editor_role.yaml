@@ -1,0 +1,27 @@
+# permissions for end users to edit podrestores.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: kop
+    app.kubernetes.io/managed-by: kustomize
+  name: podrestore-editor-role
+rules:
+- apiGroups:
+  - backup.kop.hanshal.com
+  resources:
+  - podrestores
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - backup.kop.hanshal.com
+  resources:
+  - podrestores/status
+  verbs:
+  - get
